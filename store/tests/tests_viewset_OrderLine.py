@@ -86,9 +86,10 @@ class OrderLineTests(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-    def test_create_without_permission(self):
+    def test_create_without_membership(self):
         """
-        Ensure we can't create an order line if user has no permission.
+        Ensure we can't create an order line if user does not have the required
+        membership.
         """
         self.client.force_authenticate(user=self.user)
 
@@ -106,12 +107,15 @@ class OrderLineTests(APITestCase):
         )
 
         content = {
-            'detail': 'You do not have permission to perform this action.'
+            'object_id': [
+                'User does not have the required membership to order this '
+                'package.'
+            ]
         }
 
         self.assertEqual(json.loads(response.content), content)
 
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_create_missing_field(self):
         """
