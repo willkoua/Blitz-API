@@ -28,6 +28,7 @@ class ReservationTests(APITestCase):
     @classmethod
     def setUpClass(cls):
         super(ReservationTests, cls).setUpClass()
+        cls.maxDiff=None
         cls.client = APIClient()
         cls.user = UserFactory()
         cls.admin = AdminFactory()
@@ -145,6 +146,8 @@ class ReservationTests(APITestCase):
                 'id': 2,
                 'exclusive_memberships': [],
                 'places_remaining': 38,
+                'next_user_notified': 0,
+                'notification_interval': '1 00:00:00',
                 'price': '3.00',
                 'start_time': '2130-02-15T08:00:00-05:00',
                 'url': 'http://testserver/retirement/retirements/1',
@@ -163,6 +166,7 @@ class ReservationTests(APITestCase):
                 'name': 'random_retirement',
                 'pictures': [],
                 'postal_code': '123 456',
+                'reserved_seats': 0,
                 'seats': 40,
                 'state_province': 'Random state',
                 'timezone': None,
@@ -312,6 +316,8 @@ class ReservationTests(APITestCase):
                 'id': 2,
                 'exclusive_memberships': [],
                 'places_remaining': 38,
+                'next_user_notified': 0,
+                'notification_interval': '1 00:00:00',
                 'price': '3.00',
                 'start_time': '2130-02-15T08:00:00-05:00',
                 'url': 'http://testserver/retirement/retirements/1',
@@ -330,6 +336,7 @@ class ReservationTests(APITestCase):
                 'name': 'random_retirement',
                 'pictures': [],
                 'postal_code': '123 456',
+                'reserved_seats': 0,
                 'seats': 40,
                 'state_province': 'Random state',
                 'timezone': None,

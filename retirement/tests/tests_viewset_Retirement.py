@@ -24,6 +24,7 @@ class RetirementTests(APITestCase):
     @classmethod
     def setUpClass(cls):
         super(RetirementTests, cls).setUpClass()
+        cls.maxDiff=None
         cls.client = APIClient()
         cls.user = UserFactory()
         cls.admin = AdminFactory()
@@ -91,10 +92,13 @@ class RetirementTests(APITestCase):
             'latitude': None,
             'longitude': None,
             'name': 'random_retirement',
+            'next_user_notified': 0,
+            'notification_interval': '1 00:00:00',
             'pictures': [],
             'start_time': '2130-01-15T12:00:00-05:00',
             'end_time': '2130-01-17T16:00:00-05:00',
             'seats': 40,
+            'reserved_seats': 0,
             'activity_language': None,
             'price': '100.00',
             'exclusive_memberships': [],
@@ -338,6 +342,9 @@ class RetirementTests(APITestCase):
             'start_time': '2130-01-15T08:00:00-05:00',
             'end_time': '2130-01-17T12:00:00-05:00',
             'seats': 40,
+            'reserved_seats': 0,
+            'next_user_notified': 0,
+            'notification_interval': '1 00:00:00',
             'price': '199.00',
             'exclusive_memberships': [],
             'timezone': "America/Montreal",
@@ -407,6 +414,9 @@ class RetirementTests(APITestCase):
                 'start_time': '2130-01-15T08:00:00-05:00',
                 'end_time': '2130-01-17T12:00:00-05:00',
                 'seats': 400,
+                'reserved_seats': 0,
+                'next_user_notified': 0,
+                'notification_interval': '1 00:00:00',
                 'price': '199.00',
                 'exclusive_memberships': [],
                 'timezone': None,
@@ -456,6 +466,9 @@ class RetirementTests(APITestCase):
             'start_time': '2130-01-15T08:00:00-05:00',
             'end_time': '2130-01-17T12:00:00-05:00',
             'seats': 400,
+            'reserved_seats': 0,
+            'next_user_notified': 0,
+            'notification_interval': '1 00:00:00',
             'price': '199.00',
             'exclusive_memberships': [],
             'timezone': None,
@@ -511,6 +524,9 @@ class RetirementTests(APITestCase):
             'pictures': [],
             'start_time': '2130-01-15T08:00:00-05:00',
             'end_time': '2130-01-17T12:00:00-05:00',
+            'reserved_seats': 0,
+            'next_user_notified': 0,
+            'notification_interval': '1 00:00:00',
             'seats': 400,
             'price': '199.00',
             'exclusive_memberships': [],
